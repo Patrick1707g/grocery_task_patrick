@@ -43,6 +43,7 @@ final List<Product> mockProducts = [
     imageAsset: 'assets/images/peach.png',
     colorValue: 0xffFFCEC1,
   ),
+  
   const Product(
     name: 'Avocado',
     description: '2.0 lbs',

@@ -14,6 +14,7 @@ class WishlistRepository {
     return _productsController.stream;
   }
 
+
   Future<void> addProduct(Product product) async {
     _tmpProductsList.add(product);
     // Neues Event zum StreamController hinzufügen, damit dieses ausgegeben wird.
