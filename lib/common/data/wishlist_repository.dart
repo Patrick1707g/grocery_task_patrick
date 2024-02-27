@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:grocery_task/common/domain/product.dart';
 
 class WishlistRepository {
@@ -14,11 +15,27 @@ class WishlistRepository {
     return _productsController.stream;
   }
 
-
-  Future<void> addProduct(Product product) async {
+  /*Future<void> addProduct(Product product) async {
     _tmpProductsList.add(product);
     // Neues Event zum StreamController hinzufügen, damit dieses ausgegeben wird.
     _productsController.add(_tmpProductsList);
+  }
+
+  Future<void> removeProduct(Product product) async {
+    _tmpProductsList.remove(product);
+    // Neues Event zum StreamController hinzufügen, damit dieses ausgegeben wird.
+    _productsController.add(_tmpProductsList);
+  }*/
+  Future<void> addProduct(Product product) async {
+    final CollectionReference<Map<String, dynamic>> wishCollectionRef =
+        _firestore.collection("wishlist");
+    wishCollectionRef.add({
+      "name": product.name,
+      "description": product.description,
+      "price": double.parse(product.price.toString()),
+      "imageAsset": product.imageAsset,
+      "colorValue": product.colorValue,
+    });
   }
 
   Future<void> removeProduct(Product product) async {
