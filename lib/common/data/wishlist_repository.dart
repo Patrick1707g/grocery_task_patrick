@@ -30,6 +30,9 @@ class WishlistRepository {
   Future<void> addProduct(Product product) async {
     final CollectionReference<Map<String, dynamic>> wishCollectionRef =
         _firestore.collection("wishlist");
+         _tmpProductsList.add(product);
+         _productsController.add(_tmpProductsList);
+         
     wishCollectionRef.add({
       "name": product.name,
       "description": product.description,
