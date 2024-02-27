@@ -20,4 +20,6 @@ class ProductController extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  void resetProducts() {}
 }

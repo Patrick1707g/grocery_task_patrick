@@ -1,9 +1,10 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:grocery_task/common/domain/product.dart';
 
+
 class WishlistRepository {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   // Soll von Firestore kommen.
   final _tmpProductsList = <Product>[];
   // Temporärer StreamController, um die Produkte zu speichern, bis die Daten
